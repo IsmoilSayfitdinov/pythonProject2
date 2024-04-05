@@ -31,10 +31,9 @@ class Database:
         """
         flowers = """
             CREATE TABLE IF NOT EXISTS flowers(
-                flower_id SERIAL PRIMARY KEY,
-                followes_id INT REFERENCES users(id),
-                followed_id INT REFERENCES users(id),
-                create_date TIMESTAMP default now()
+                follower_id SERIAL PRIMARY KEY,
+                followes_id INT,
+                FOREIGN KEY (followes_id) REFERENCES users (id)
             )
         """
 

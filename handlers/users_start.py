@@ -26,7 +26,7 @@ Bot Username: {a[3]}
 Bio: {a[4]}
             """, reply_markup=default.back)
 
-        @dp.message_handler(commands="search")
+        @dp.message_handler(text="Qidiruv")
         async def search(message: types.Message):
             await message.answer("Qidirmoqchi bolgan odamni Username ni kiriting !!")
             await Seacrh.username.set()
@@ -69,7 +69,6 @@ async def process_search_username(message: types.Message, state: FSMContext):
     query = f"SELECT * FROM users WHERE username = '{username}'"
     db.cursor.execute(query)
     results = db.cursor.fetchall()
-    print(results)
     if results:
         await message.answer(text=f"ID: {results[0][0]}\nBunday User topildi: {results[0][3]}", reply_markup=default.followers)
     else:
@@ -77,16 +76,17 @@ async def process_search_username(message: types.Message, state: FSMContext):
     await state.finish()
     
     
-@dp.message_handler(text="Follower")
-async def followrs_add_serach(message: types.Message):
-    await message.answer("Follower qilmoqchi bolgan odamni ID sini kiriting !!")
-    await Follower.id.set()
+# @dp.message_handler(commands="Follower")
+# async def followrs_add_serach(message: types.Message):
+#     await message.answer("Follower qilmoqchi bolgan odamni ID sini kiriting !!")
+#     await Follower.id.set()
 
-
-@dp.message_handler(state=Follower.id)
-async def followers_add(message: types.Message, state: FSMContext):
-    id = message.text
-    query = f"INSERT INTO flowers(followes_id) VALUES ({id})"
-    db.cursor.execute(query)
-    res = db.conn.commit()
-    print(res)
+# @dp.message_handler(state=Follower.id)
+# async def followers_add(message: types.Message, state: FSMContext):
+#     query = f"INSERT INTO flowers(followes_id) VALUES( {message.text}"
+#     db.cursor.execute(query)
+#     res = db.conn.commit()
+#     if res:
+#         print("Good")
+#     else:
+#         print("Not good")
