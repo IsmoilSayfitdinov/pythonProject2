@@ -75,18 +75,3 @@ async def process_search_username(message: types.Message, state: FSMContext):
         await message.answer("Bunday user toplimadi kechirasiz !!")
     await state.finish()
     
-    
-# @dp.message_handler(commands="Follower")
-# async def followrs_add_serach(message: types.Message):
-#     await message.answer("Follower qilmoqchi bolgan odamni ID sini kiriting !!")
-#     await Follower.id.set()
-
-# @dp.message_handler(state=Follower.id)
-# async def followers_add(message: types.Message, state: FSMContext):
-#     query = f"INSERT INTO flowers(followes_id) VALUES( {message.text}"
-#     db.cursor.execute(query)
-#     res = db.conn.commit()
-#     if res:
-#         print("Good")
-#     else:
-#         print("Not good")

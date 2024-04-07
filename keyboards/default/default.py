@@ -1,7 +1,8 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardButton, InlineKeyboardMarkup
 
 about_profil = ReplyKeyboardMarkup(keyboard=[
-    [KeyboardButton('About'), KeyboardButton('Qidiruv')]
+    [KeyboardButton('About'), KeyboardButton('Qidiruv')],
+    [KeyboardButton('Rasmlar'), KeyboardButton('Rasm joylash')]
 ],
     resize_keyboard=True,
     one_time_keyboard=True
@@ -16,13 +17,10 @@ one_time_keyboard=True
 )
 
 
-followers = ReplyKeyboardMarkup(
-    keyboard=[
-        [KeyboardButton('Follower'), KeyboardButton('UnFollow')]
+followers = InlineKeyboardMarkup(
+    inline_keyboard=[
+        [
+            InlineKeyboardButton("Follower", callback_data="follower")
+        ]
     ]
-    ,
-    resize_keyboard=True,
-    one_time_keyboard=True
 )
-
-
